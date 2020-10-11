@@ -2,6 +2,12 @@ const usersRepo = require('./user.memory.repository');
 
 const getAll = () => usersRepo.getAll();
 
-const get = id => usersRepo.get(id);
+const getById = id => usersRepo.getById(id);
 
-module.exports = { getAll, get };
+const create = user => usersRepo.create(user);
+
+const update = (id, user) => usersRepo.update(id, user);
+
+const deleted = id => usersRepo.deleted(id);
+
+module.exports = { getAll, getById, create, update, deleted };

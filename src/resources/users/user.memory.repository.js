@@ -1,6 +1,7 @@
-const getAll = async () => {
-  // TODO: mock implementation. should be replaced during task development
-  return [];
-};
+const DB = require('../../common/inMemoryDB');
 
-module.exports = { getAll };
+const getAll = async () => DB[0];
+
+const get = async id => DB[0].find(el => el.id === id);
+
+module.exports = { getAll, get };

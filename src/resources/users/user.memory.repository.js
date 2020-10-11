@@ -19,7 +19,12 @@ const update = async (id, user) => {
 
 const deleted = async id => {
   const userIndex = DB[0].findIndex(el => el.id === id);
-  return DB[0].splice(userIndex, 1);
+  DB[0].splice(userIndex, 1);
+  DB[2].forEach(el => {
+    if (el.userId === id) {
+      el.userId = null;
+    }
+  });
 };
 
 module.exports = { getAll, getById, create, update, deleted };

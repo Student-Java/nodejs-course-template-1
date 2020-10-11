@@ -13,12 +13,13 @@ const update = async (id, board) => {
   const boardUpdate = DB[1].find(el => el.id === id);
   boardUpdate.title = board.title;
   boardUpdate.columns = board.columns;
-  return getById(id);
+  return boardUpdate;
 };
 
 const deleted = async id => {
   const boardIndex = DB[1].findIndex(el => el.id === id);
-  return DB[1].splice(boardIndex, 1);
+  DB[1].splice(boardIndex, 1);
+  DB[2] = DB[2].filter(el => el.boardId !== id);
 };
 
 module.exports = { getAll, getById, create, update, deleted };
